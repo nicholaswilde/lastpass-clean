@@ -1,2 +1,2 @@
 # lastpass-clean
-A script to help clean up a LastPass vault
+Bash script to help clean up a LastPass vault
