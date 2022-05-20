@@ -29,7 +29,7 @@ dashes and convert the names to lowercase.
 
 ## Prerequisites
 
-## Scripts
+## :scroll:&nbsp; Scripts
 
 | Script          | Description                                     |
 |-----------------|-------------------------------------------------|
