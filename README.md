@@ -25,7 +25,7 @@ One way of doing this is to check if the `url` parameter is actually a dead url.
 Sometime the sub domain isn't available anymore but the website still exists.
 
 Another cleanup task is to rename the items. Since I am using the command line client more, I decided to replace spaces with
-dashes and convert the names to lowercase.
+dashes and convert the names to lowercase to make it easier to work with the command prompt.
 
 ## :chess_pawn:&nbsp; Prerequisites
 
