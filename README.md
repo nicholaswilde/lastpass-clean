@@ -22,8 +22,8 @@ rm bad-urls.txt
 
 | Script          | Description                                     |
 |-----------------|-------------------------------------------------|
-| check-urls.sh   | Check LastPass vault for dead urls              |
-| rm-dead-urls.sh | Remove items with dead urls from LastPass vault |
+| `check-urls.sh`   | Check LastPass vault for dead urls              |
+| `rm-dead-urls.sh` | Remove items with dead urls from LastPass vault |
 
 ## Usage
 
