@@ -29,6 +29,10 @@ dashes and convert the names to lowercase.
 
 ## :chess_pawn:&nbsp; Prerequisites
 
+```shell
+brew install lastpass-cli jq
+```
+
 ## :scroll:&nbsp; Scripts
 
 | Script          | Description                                     |
@@ -37,6 +41,17 @@ dashes and convert the names to lowercase.
 | `rm-dead-urls.sh` | Remove items with dead urls from LastPass vault |
 
 ## :book:&nbsp; Usage
+
+```shell
+# Make the scripts executable
+chmod +x check-urls.sh rm-dead-urls.sh
+# Check items for bad urls and export them to a text file
+./check-urls.sh bad-urls.txt
+# Remove the items with dead urls.
+./rm-dead-urls.sh bad-urls.txt
+# Remove the bad url text file.
+rm bad-urls.txt
+```
 
 ## :balance_scale:&nbsp; License
 
