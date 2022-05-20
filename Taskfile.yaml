@@ -1,0 +1,28 @@
+---
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  lint:
+    desc: Lint the project
+    cmds:
+      - shellcheck -x ./check-urls.sh
+  pinentry:
+    desc: Set pinentry
+    cmds:
+      - ./check-urls.sh {{ .FILENAME }}
+    env:
+      LPASS_DISABLE_PINENTRY: 1
+    vars:
+      FILENAME: bad-urls.txt
+  run:
+    desc: Run
+    cmds:
+      - ./check-urls.sh {{ .FILENAME }}
+    vars:
+      FILENAME: bad-urls.txt
+  default:
+    cmds:
+      - task -l
+    silent: true

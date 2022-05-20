@@ -1,4 +1,5 @@
 # lastpass-clean
+
 Bash scripts to help clean up a LastPass vault
 
 > :warning: Warning: Theses scripts remove items from a LastPass vault! Use with cation!
@@ -6,7 +7,7 @@ Bash scripts to help clean up a LastPass vault
 ## :rocket:&nbsp; TL;DR
 
 ```shell
-brew install lastpass-cli
+brew install lastpass-cli jq
 chmod +x check-urls.sh rm-dead-urls.sh
 ./check-urls.sh bad-urls.txt
 ./rm-dead-urls.sh bad-urls.txt
@@ -15,7 +16,16 @@ rm bad-urls.txt
 
 ## Background
 
-## Instructions
+## Prerequisites
+
+## Scripts
+
+| Script          | Description                                     |
+|-----------------|-------------------------------------------------|
+| check-urls.sh   | Check LastPass vault for dead urls              |
+| rm-dead-urls.sh | Remove items with dead urls from LastPass vault |
+
+## Usage
 
 ## :balance_scale:&nbsp; License
 
