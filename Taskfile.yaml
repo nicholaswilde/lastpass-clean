@@ -15,13 +15,13 @@ tasks:
     env:
       LPASS_DISABLE_PINENTRY: 1
     vars:
-      FILENAME: bad-urls.txt
+      FILENAME: dead-urls.txt
   run:
     desc: Run
     cmds:
       - ./check-urls.sh {{ .FILENAME }}
     vars:
-      FILENAME: bad-urls.txt
+      FILENAME: dead-urls.txt
   default:
     cmds:
       - task -l
