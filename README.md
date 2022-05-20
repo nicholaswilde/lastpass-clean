@@ -14,7 +14,7 @@ chmod +x check-urls.sh rm-dead-urls.sh
 rm bad-urls.txt
 ```
 
-## Background
+## :framed_picture:&nbsp; Background
 
 I have been using [LastPass][1] as my password manager for quite some time and now have over 1,000 items.
 I have realized that a lot of my items haven't been used in quite some time and so I wanted to clean it up.
