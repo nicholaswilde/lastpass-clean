@@ -40,7 +40,7 @@ brew install lastpass-cli jq
 | `check-urls.sh`   | Check LastPass vault for dead urls              |
 | `rm-dead-url-items.sh` | Remove items with dead urls from LastPass vault |
 | `check-names.sh` | Check LastPass vault for items that need to be renamed |
-| `rename.sh` | Rename items from LastPass vault |
+| `rename-items.sh` | Rename items from LastPass vault |
 
 ## :book:&nbsp; Usage
 
