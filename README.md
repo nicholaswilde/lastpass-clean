@@ -16,6 +16,17 @@ rm bad-urls.txt
 
 ## Background
 
+I have been using LastPass as my password manager for quite some time and now have over 1,000 items.
+I have realized that a lot of my items haven't been used in quite some time and so I wanted to clean it up.
+Going through all of the entries manually is a daunting task and so I decided to leverage lastpass-cli to automate the cleanup.
+
+One cleanup task is to remove items to websites that no longer exist.
+One way of doing this is to check if the `url` parameter is actually a dead url.
+Sometime the sub domain isn't available anymore but the website still exists.
+
+Another cleanup task is to rename the items. Since I am using the command line client more, I decided to replace spaces with
+dashes and convert the names to lowercase.
+
 ## Prerequisites
 
 ## Scripts
