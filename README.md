@@ -47,6 +47,7 @@ brew install lastpass-cli jq
 chmod +x check-urls.sh rm-dead-urls.sh
 # Check items for bad urls and export them to a text file
 ./check-urls.sh bad-urls.txt
+# Manually review the text file to confirm that there aren't any items that should not be deleted.
 # Remove the items with dead urls.
 ./rm-dead-urls.sh bad-urls.txt
 # Remove the bad url text file.
