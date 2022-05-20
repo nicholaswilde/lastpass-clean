@@ -50,8 +50,8 @@ chmod +x check-urls.sh rm-dead-urls.sh
 # Manually review the text file to confirm that there aren't any items that should not be deleted.
 # Remove the items with dead urls.
 ./rm-dead-url-items.sh dead-urls.txt
-# Remove the bad url text file.
-rm bad-urls.txt
+# Remove the dead url text file.
+rm dead-urls.txt
 ```
 
 ## :balance_scale:&nbsp; License
