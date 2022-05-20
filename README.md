@@ -42,6 +42,14 @@ brew install lastpass-cli jq
 | `check-names.sh` | Check LastPass vault for items that need to be renamed |
 | `rename-items.sh` | Rename items from LastPass vault |
 
+## Backup
+
+Be sure to backup the vault before using these scripts.
+
+```shell
+lpass export > backup.csv
+```
+
 ## :book:&nbsp; Usage
 
 ```shell
