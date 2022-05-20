@@ -27,7 +27,7 @@ Sometime the sub domain isn't available anymore but the website still exists.
 Another cleanup task is to rename the items. Since I am using the command line client more, I decided to replace spaces with
 dashes and convert the names to lowercase.
 
-## Prerequisites
+## :chess_pawn:&nbsp; Prerequisites
 
 ## :scroll:&nbsp; Scripts
 
