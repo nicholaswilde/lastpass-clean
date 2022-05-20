@@ -5,7 +5,7 @@ set -o pipefail
 SCRIPT_VERSION="0.1.0"
 
 SCRIPT_NAME="$(basename "${0}")"
-SCRIPT_DESC="Check LastPass vault for dead urls"
+SCRIPT_DESC="Check LastPass vault for items that need to be renamed"
 readonly SCRIPT_NAME
 readonly SCRIPT_DESC
 readonly SCRIPT_VERSION
