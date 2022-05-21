@@ -27,3 +27,40 @@ function get_domain(){
 function get_data(){
   lpass show --expand-multi --basic-regexp '.*' --json
 }
+
+# printf usage_error if something isn't right.
+function usage_error() {
+  show_usage "${1}"
+  printf "\nTry %s -h for more options.\n" "${1}" >&2
+  exit 1
+}
+
+function show_usage(){
+  printf "Usage: %s [OPTIONS] FILENAME\n" "${1}"
+}
+
+function show_version(){
+  printf "%s version %s\n" "${1}" "${2}"; exit 0
+}
+
+function script_desc(){
+  printf "%s\n\n" "${1}"
+}
+
+# Show the help
+function show_help(){
+  show_usage "${1}"
+  script_desc "${2}"
+  printf "Mandatory arguments:\n"
+  printf "  FILENAME            The filename to export the dead urls to\n\n"
+  printf "Options:\n"
+  printf "  -h, --help          Print this Help.\n"
+  printf "  -v, --version       Print script version and exit.\n"
+  exit 0
+}
+
+function check_apps(){
+  ! command_exists lpass  && printf "lpass is not installed\n" && exit 1
+  ! command_exists jq     && printf "jp is not installed\n" && exit 1
+  ! command_exists curl   && printf "curl is not installed\n" && exit 1
+}

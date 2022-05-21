@@ -12,43 +12,6 @@ readonly SCRIPT_VERSION
 
 source ./lib/libbash
 
-function show_usage(){
-  printf "Usage: %s [-h|-v] FILENAME\n" "${SCRIPT_NAME}"
-}
-
-function script_desc(){
-  printf "%s\n\n" "${SCRIPT_DESC}"
-}
-
-# Show the help
-function show_help(){
-  show_usage
-  script_desc
-  printf "Mandatory arguments:\n"
-  printf "  FILENAME            The filename to export the dead urls to\n\n"
-  printf "Options:\n"
-  printf "  -h                  Print this Help.\n"
-  printf "  -v                  Print script version and exit.\n"
-  exit 0
-}
-
-function show_version(){
-  printf "%s version %s\n" "${SCRIPT_NAME}" "${SCRIPT_VERSION}"; exit 0
-}
-
-# printf usage_error if something isn't right.
-function usage_error() {
-  show_usage
-  printf "\nTry %s -h for more options.\n" "${SCRIPT_NAME}" >&2
-  exit 1
-}
-
-function check_apps(){
-  ! command_exists lpass  && printf "lpass is not installed\n" && exit 1
-  ! command_exists jq     && printf "jp is not installed\n" && exit 1
-  ! command_exists curl   && printf "curl is not installed\n" && exit 1
-}
-
 function check_urls(){
   local filename="${1}"
   # https://unix.stackexchange.com/a/477218/93726
@@ -62,13 +25,13 @@ function check_urls(){
     domain=$(get_domain "${url}")
     if ! is_null "${domain}" && [[ "${domain}" != "sn" ]] ; then
       if ! test_domain "${domain}"; then
-        s=$(printf "%s,%s,%s\n" "${id}" "${name}" "${domain}")
+        s=$(printf "%s,%s,%s" "${id}" "${name}" "${domain}")
         printf "(${k}/${n})\t%s\n" "${s}"
         arr+=("${s}")
       fi
     fi
   done
-  echo "${arr[@]}" > "${filename}"
+  printf "%s\n" "${arr[@]}" > "${filename}"
 }
 
 function main(){
@@ -76,17 +39,25 @@ function main(){
   check_urls "$@"
 }
 
-if [ $# -ne 1 ]; then usage_error; fi                                                                                                                                                                                                                     
+if [ $# -ne 1 ]; then usage_error "${SCRIPT_NAME}"; fi                                                                                                                                                                                                                     
 
 # https://www.jamescoyle.net/how-to/1774-bash-getops-example
 # https://opensource.com/article/19/12/help-bash-program
 # Get the options
-while getopts ":hv" o; do
+# while getopts ":hv" o; do
+while getopts ":hv-" o; do
+  # support long options: https://stackoverflow.com/a/28466267/519360
+  if [ "${o}" = "-" ]; then   # long option: reformulate o and OPTARG
+    o="${OPTARG%%=*}"       # extract long option name
+    OPTARG="${OPTARG#"$o"}"   # extract long option argument (may be empty)
+    OPTARG="${OPTARG#=}"      # if long option argument, remove assigning `=`
+  fi
   case "${o}" in
-    h)  show_help;;
-    v)  show_version;;
-    \?) usage_error;;
+    h|help)    show_help "${SCRIPT_NAME}" "${SCRIPT_DESC}";;
+    v|version) show_version "${SCRIPT_NAME}" "${SCRIPT_VERSION}";;
+    ??*)         usage_error "${SCRIPT_NAME}";;
+    ?)           usage_error "${SCRIPT_NAME}";;
   esac
 done
-
+shift $((OPTIND-1)) # remove parsed options and args from $@ list
 main "$@"
