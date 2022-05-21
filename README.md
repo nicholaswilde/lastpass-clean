@@ -27,7 +27,7 @@ Sometime the sub domain isn't available anymore but the website still exists.
 Another cleanup task is to rename the items. Since I am using the command line client more, I decided to replace spaces with
 dashes and convert the names to lowercase to make it easier to work with the command prompt.
 
-## :chess_pawn:&nbsp; Prerequisites
+## :gear:&nbsp; Prerequisites
 
 ```shell
 brew install lastpass-cli jq whois
@@ -62,7 +62,7 @@ Make the scripts executable
 chmod +x check-urls.sh rm-dead-url-items.sh check-names.sh rename-items.sh
 ```
 
-### Remove Dead URL Items
+### :link:&nbsp; Remove Dead URL Items
 
 Check items for dead urls and export them to a csv file
 
@@ -88,7 +88,7 @@ Remove the dead url csv file.
 rm dead-urls.csv
 ```
 
-### Rename Items
+### :open_file_folder:&nbsp; Rename Items
 
 WIP
 
