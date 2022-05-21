@@ -31,6 +31,8 @@ dashes and convert the names to lowercase to make it easier to work with the com
 
 ```shell
 brew install lastpass-cli jq whois
+# or
+task deps
 ```
 
 ## :scroll:&nbsp; Scripts
@@ -48,21 +50,47 @@ Be sure to backup the vault before using these scripts.
 
 ```shell
 lpass export > backup.csv
+# or
+task backup
 ```
 
 ## :book:&nbsp; Usage
 
+Make the scripts executable
+
 ```shell
-# Make the scripts executable
-chmod +x check-urls.sh rm-dead-url-items.sh
-# Check items for dead urls and export them to a csv file
+chmod +x check-urls.sh rm-dead-url-items.sh check-names.sh rename-items.sh
+```
+
+### Remove Dead URL Items
+
+Check items for dead urls and export them to a csv file
+
+```shell
 ./check-urls.sh dead-urls.csv
-# Manually review the text file to confirm that there aren't any items that should not be deleted.
-# Remove the items with dead urls.
+# or
+task urls
+```
+
+Manually review the csv file to confirm that there aren't any items that should not be deleted.
+
+Remove the items with dead urls.
+
+```shell
 ./rm-dead-url-items.sh dead-urls.csv
-# Remove the dead url csv file.
+# or
+task rm
+```
+
+Remove the dead url csv file.
+
+```shell
 rm dead-urls.csv
 ```
+
+### Rename Items
+
+WIP
 
 ## :balance_scale:&nbsp; License
 

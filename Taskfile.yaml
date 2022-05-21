@@ -14,6 +14,10 @@ tasks:
     desc: Clean the dir of csv files
     cmds:
       - rm *.csv
+  deps:
+    desc: Install dependencies
+    cmds:
+      - brew install $(cat formulas)
   lint:
     desc: Lint the project
     cmds:
@@ -26,18 +30,30 @@ tasks:
       LPASS_DISABLE_PINENTRY: 1
     vars:
       FILENAME: dead-urls.csv
-  run:
-    desc: Run
+  urls:
+    desc: Check for dead urls
     cmds:
       - ./check-urls.sh {{ .FILENAME }}
     vars:
       FILENAME: dead-urls.csv
   rm:
-    desc: Remove LastPass items
+    desc: Remove LastPass items with dead urls
     cmds:
       - ./rm-dead-url-items.sh {{ .FILENAME }}
     vars:
       FILENAME: dead-urls.csv
+  names:
+    desc: Check for items to be renamed
+    cmds:
+      - ./check-names.sh {{ .FILENAME }}
+    vars:
+      FILENAME: rename.csv
+  rename:
+    desc: Rename items in the LastPass vault
+    cmds:
+      - ./rename.sh {{ .FILENAME }}
+    vars:
+      FILENAME: rename.csv
   default:
     cmds:
       - task -l
