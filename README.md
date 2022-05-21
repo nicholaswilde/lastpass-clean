@@ -7,7 +7,7 @@ Bash scripts to help clean up a [LastPass][1] vault
 ## :rocket:&nbsp; TL;DR
 
 ```shell
-brew install lastpass-cli jq
+brew install lastpass-cli jq whois
 chmod +x check-urls.sh rm-dead-url-items.sh
 ./check-urls.sh dead-urls.csv
 ./rm-dead-url-items.sh dead-urls.csv
@@ -30,7 +30,7 @@ dashes and convert the names to lowercase to make it easier to work with the com
 ## :chess_pawn:&nbsp; Prerequisites
 
 ```shell
-brew install lastpass-cli jq
+brew install lastpass-cli jq whois
 ```
 
 ## :scroll:&nbsp; Scripts
@@ -42,7 +42,7 @@ brew install lastpass-cli jq
 | `check-names.sh` | Check LastPass vault for items that need to be renamed |
 | `rename-items.sh` | Rename items from LastPass vault |
 
-## Backup
+## :floppy_disk:&nbsp; Backup
 
 Be sure to backup the vault before using these scripts.
 
