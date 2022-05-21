@@ -9,9 +9,9 @@ Bash scripts to help clean up a [LastPass][1] vault
 ```shell
 brew install lastpass-cli jq
 chmod +x check-urls.sh rm-dead-url-items.sh
-./check-urls.sh dead-urls.txt
-./rm-dead-url-items.sh dead-urls.txt
-rm dead-urls.txt
+./check-urls.sh dead-urls.csv
+./rm-dead-url-items.sh dead-urls.csv
+rm dead-urls.csv
 ```
 
 ## :framed_picture:&nbsp; Background
@@ -54,14 +54,14 @@ lpass export > backup.csv
 
 ```shell
 # Make the scripts executable
-chmod +x check-urls.sh rm-dead-urls.sh
-# Check items for dead urls and export them to a text file
-./check-urls.sh dead-urls.txt
+chmod +x check-urls.sh rm-dead-url-items.sh
+# Check items for dead urls and export them to a csv file
+./check-urls.sh dead-urls.csv
 # Manually review the text file to confirm that there aren't any items that should not be deleted.
 # Remove the items with dead urls.
-./rm-dead-url-items.sh dead-urls.txt
-# Remove the dead url text file.
-rm dead-urls.txt
+./rm-dead-url-items.sh dead-urls.csv
+# Remove the dead url csv file.
+rm dead-urls.csv
 ```
 
 ## :balance_scale:&nbsp; License

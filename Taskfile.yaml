@@ -4,6 +4,16 @@
 version: '3'
 
 tasks:
+  backup:
+    desc: Backup a LastPass vault
+    cmds:
+      - lpass export > {{ .FILENAME }}
+    vars:
+      FILENAME: backup.csv
+  clean:
+    desc: Clean the dir of csv files
+    cmds:
+      - rm *.csv
   lint:
     desc: Lint the project
     cmds:
@@ -15,13 +25,19 @@ tasks:
     env:
       LPASS_DISABLE_PINENTRY: 1
     vars:
-      FILENAME: dead-urls.txt
+      FILENAME: dead-urls.csv
   run:
     desc: Run
     cmds:
       - ./check-urls.sh {{ .FILENAME }}
     vars:
-      FILENAME: dead-urls.txt
+      FILENAME: dead-urls.csv
+  rm:
+    desc: Remove LastPass items
+    cmds:
+      - ./rm-dead-url-items.sh {{ .FILENAME }}
+    vars:
+      FILENAME: dead-urls.csv
   default:
     cmds:
       - task -l

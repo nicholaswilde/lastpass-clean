@@ -1,6 +1,6 @@
 #!/bin/bash
 # set -e
-set -o pipefail
+# set -o pipefail
 
 SCRIPT_VERSION="0.1.0"
 
@@ -24,6 +24,7 @@ function check_urls(){
     id=$(jq -r '.id' <<< "${value}")
     domain=$(get_domain "${url}")
     if ! is_null "${domain}" && [[ "${domain}" != "sn" ]] ; then
+      domain=$(split "${domain}" ".")
       if ! test_domain "${domain}"; then
         s=$(printf "%s,%s,%s" "${id}" "${name}" "${domain}")
         printf "(${k}/${n})\t%s\n" "${s}"

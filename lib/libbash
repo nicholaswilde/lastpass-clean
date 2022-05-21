@@ -7,11 +7,17 @@ function command_exists(){
 
 # Check is variable is null                                                                                                                                                                                                                  
 function is_null {                                                                                                                                                                                                                           
-  [ -z "$1" ]                                                                                                                                                                                                                                
+  [ -z "${1}" ]                                                                                                                                                                                                                                
 }   
 
+# Check if file exists
+function file_exists(){
+  [ -f "{1}" ]
+}
+
 function test_domain(){                                                                                                                                                                                                                      
-  curl -sSf "${1}" >/dev/null 2>&1                                                                                                                                                                                                           
+  # curl -sSf --connect-timeout 10 "${1}" >/dev/null 2>&1
+  whois "${1}" >/dev/null 2>&1
   return $?                                                                                                                                                                                                                                  
 }
 
@@ -20,7 +26,18 @@ function get_domain(){
   f="${f#www.}"
   f="${f#www1.}"
   f="${f#www2.}"
+  f=$(split "${f}")
   echo "${f}"
+}
+
+function split(){
+  IFS=$'\n' read -d "" -ra arr <<< "${1//$2/$'\n'}"
+  n="${#arr[@]}"
+  if [[ $n -gt 2 ]]; then
+    echo "${arr[${n}-2]}.${arr[${n}-1]}"
+  else
+    echo "${1}"
+  fi
 }
 
 # https://github.com/lastpass/lastpass-cli/issues/560#issuecomment-724266729
