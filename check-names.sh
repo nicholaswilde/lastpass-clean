@@ -3,6 +3,9 @@
 # set -o pipefail
 shopt -s extglob
 
+# Add to array without commas
+IGNORE_GROUPS=("Shared-Us")
+
 SCRIPT_VERSION="0.1.0"
 
 SCRIPT_NAME="$(basename "${0}")"
@@ -27,6 +30,7 @@ function get_new_name(){
   new_name="${new_name// /-}"
   new_name="${new_name//.com/}"
   new_name="${new_name//.net/}"
+  new_name="${new_name//.org/}"
   # remove apostrophes
   new_name="${new_name//\'/}"
   # lower case
@@ -41,12 +45,12 @@ function check_urls(){
   n=$(echo "${data}" | jq '.|length')
   for k in $(echo "${data}" | jq '.|keys|.[]'); do
     value=$(echo "${data}" | jq ".[${k}]")
-    printf "%s\n" "${value}"
+    # printf "%s\n" "${value}"
     name=$(jq -r '.name' <<< "${value}")
     id=$(jq -r '.id' <<< "${value}")
+    group=$(jq -r '.group' <<< "${value}")
     new_name=$(get_new_name "${name}")
-    # printf "%s\t%s\n" "${name}" "${new_name}"
-    if [[ "${name}" != "${new_name}" ]] ; then
+    if [[ "${name}" != "${new_name}" ]] && [[ ! "${IGNORE_GROUPS[*]}" =~ $group ]] ; then
       s=$(printf "%s,%s,%s" "${id}" "${name}" "${new_name}")
       printf "(${k}/${n})\t%s\n" "${s}"
       arr+=("${s}")

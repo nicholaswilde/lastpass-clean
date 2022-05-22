@@ -15,6 +15,15 @@ function file_exists(){
   [ -f "{1}" ]
 }
 
+function in_array(){
+  arr=("$@")
+  if [[ " ${arr[*]} " =~ " ${2} " ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
 function test_domain(){                                                                                                                                                                                                                      
   # curl -sSf --connect-timeout 10 "${1}" >/dev/null 2>&1
   whois "${1}" >/dev/null 2>&1
