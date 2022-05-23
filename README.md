@@ -44,6 +44,25 @@ task deps
 | `check-names.sh` | Check LastPass vault for items that need to be renamed |
 | `rename-items.sh` | Rename items from LastPass vault |
 
+`check-names.sh` renames the files with the following changes:
+- Remove `.com`, `.gov`, `.net`
+- Replace spaces with dashes
+- Remove trailing and leader white space
+- Remove apostrophes
+- Convert to lowercase
+
+## :gear:&nbsp; Configuration
+
+`check-names.sh` - groups can be ignred by changing the `IGNORE_GROUPS` array in the header of the file. 
+
+Be sure to put the names in double quotes with no commas in between
+
+```bash
+...
+IGNORE_GROUPS=("Shared-Us" "Secure Notes")
+...
+```
+
 ## :floppy_disk:&nbsp; Backup
 
 Be sure to backup the vault before using these scripts.
@@ -90,7 +109,29 @@ rm dead-urls.csv
 
 ### :open_file_folder:&nbsp; Rename Items
 
-WIP
+Rename items and export them to a csv file
+
+```shell
+./check-names.sh rename.csv
+# or
+task names
+```
+
+Manually review the csv file to confirm that there aren't any items that should not be renamed.
+
+Rename items that need to be renamed.
+
+```shell
+./rename.sh rename.csv
+# or
+task rename
+```
+
+Remove the rename csv file.
+
+```shell
+rm rename.csv
+```
 
 ## :balance_scale:&nbsp; License
 
