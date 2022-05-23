@@ -127,7 +127,7 @@ Manually review the csv file to confirm that there aren't any items that should 
 Rename items that need to be renamed.
 
 ```shell
-./rename.sh rename.csv
+./rename-items.sh rename.csv
 # or
 task rename
 ```

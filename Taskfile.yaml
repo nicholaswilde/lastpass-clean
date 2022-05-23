@@ -22,6 +22,9 @@ tasks:
     desc: Lint the project
     cmds:
       - shellcheck -x ./check-urls.sh
+      - shellcheck -x ./rm-dead-url-items.sh
+      - shellcheck -x ./check-names.sh
+      - shellcheck -x ./rename-items.sh
   pinentry:
     desc: Set pinentry
     cmds:
@@ -51,7 +54,7 @@ tasks:
   rename:
     desc: Rename items in the LastPass vault
     cmds:
-      - ./rename.sh {{ .FILENAME }}
+      - ./rename-items.sh {{ .FILENAME }}
     vars:
       FILENAME: rename.csv
   default:
