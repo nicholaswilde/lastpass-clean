@@ -11,7 +11,7 @@ tasks:
     vars:
       FILENAME: backup.csv
   clean:
-    desc: Clean the dir of csv files
+    desc: ⚠️ Clean the dir of csv files including backup.csv!
     cmds:
       - rm *.csv
   deps:
