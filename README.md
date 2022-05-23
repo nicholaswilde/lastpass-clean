@@ -33,6 +33,8 @@ dashes and convert the names to lowercase to make it easier to work with the com
 brew install lastpass-cli jq whois
 # or
 task deps
+# or
+brew install $(cat formulas)
 ```
 
 ## :scroll:&nbsp; Scripts
