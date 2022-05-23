@@ -37,12 +37,17 @@ task deps
 
 ## :scroll:&nbsp; Scripts
 
-| Script          | Description                                     |
-|-----------------|-------------------------------------------------|
-| `check-urls.sh`   | Check LastPass vault for dead urls              |
-| `rm-dead-url-items.sh` | Remove items with dead urls from LastPass vault |
-| `check-names.sh` | Check LastPass vault for items that need to be renamed |
-| `rename-items.sh` | Rename items from LastPass vault |
+| Script                  | Description                                             |
+|-------------------------|---------------------------------------------------------|
+| `check-urls.sh`         | Check LastPass vault for dead urls                      |
+| `rm-dead-url-items.sh`  | Remove items with dead urls from LastPass vault         |
+| `check-names.sh`        | Check LastPass vault for items that need to be renamed  |
+| `rename-items.sh`       | Rename items from LastPass vault                        |
+
+`check-urls.sh` checks each item for the following:
+- Skips the item if no URL is set or is equal to `ns`
+- Checks if the main domain exists with [`whois`][4]. It does not check the sub domain. It also does not handle urls
+with more than one suffix (such as `co.uk`).
 
 `check-names.sh` renames the files with the following changes:
 - Remove `.com`, `.gov`, `.net`
@@ -133,6 +138,17 @@ Remove the rename csv file.
 rm rename.csv
 ```
 
+## :robot:&nbsp; Task
+
+This repository uses [`go-task`][5] to automate tasks.
+
+> :warning: Warning: `task clean` removes all `csv` files including `backup.csv` 
+
+```shell
+# Print a list of tasks
+task
+```
+
 ## :balance_scale:&nbsp; License
 
 [Apache 2.0 License](../LICENSE)
@@ -144,3 +160,5 @@ This project was started in 2022 by [Nicholas Wilde][2].
 [1]: https://www.lastpass.com/
 [2]: https://github.com/nicholaswilde/
 [3]: https://github.com/lastpass/lastpass-cli/
+[4]: https://manpages.debian.org/stretch/whois/whois.1.en.html
+[5]: https://taskfile.dev/#/
